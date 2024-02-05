@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Pompiere&family=Poppins:ital,wght@0,200;0,300;0,500;0,600;0,800;1,400;1,700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+    min-height: 0; min-width: 0; 
+    font-family: 'Poppins',sans-serif;
+  }
+  body {
+    @apply bg-[#F6F5F5] ;
+  }
+  br{
+    @apply hidden lg:block
+  }
+  label{
+    @apply flex flex-col gap-y-2 
+  }
+  input,select,textarea {
+    @apply h-14 max-w-[90%] rounded-lg border border-gray-300 px-5 focus:border-orange
+  }
+  button {
+    @apply !bg-orange h-14 w-[300px] mx-auto rounded-lg
+  }
+}
