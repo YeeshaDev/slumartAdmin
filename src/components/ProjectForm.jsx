@@ -30,6 +30,8 @@ export default function ProjectForm() {
         setTinyLoader(true)
         const formData = new FormData();
         formData.append("name", data?.name);
+        formData.append("name", data?.description);
+        formData.append("name", data?.date);
         formData.append("key_features", data?.key_features);
        
         console.log(data.price)
@@ -66,12 +68,19 @@ export default function ProjectForm() {
         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-y-5 mt-5 bg-white rounded-lg mx-10 max-w-[800px] p-5' encType='multipart/form-data'>
             {/* ... Your existing form fields ... */}
             <label htmlFor="name">Project Name</label>
-            <input type="text" placeholder="Product Name" {...register("name", { required: true, maxLength: 80 })} />
+            <input type="text" placeholder="Product Name" {...register("name", { required: true, maxLength: 100 })} />
             {errors?.name && <span className="text-red-500">Project Name is required</span>}
-            <label htmlFor="key_features">Description</label>
-            <textarea type='text' placeholder="description" className=' !justify-start h-40' {...register("key_features", { required: true, maxLength: 1000 })} />
-            {errors?.key_feature && <span className="text-red-500">Project Description is required (max length: 1000 characters)</span>}
+            <label htmlFor="description">Description</label>
+            <textarea type='text' placeholder="Description" className=' !justify-start h-40 pt-2' {...register("description", { required: true, maxLength: 1500 })} />
+            {errors?.description && <span className="text-red-500">Project Description is required (max length: 1500 characters)</span>}
 
+            <label htmlFor="key_features">Key Features</label>
+            <textarea type='text' placeholder="Key Features" className=' !justify-start h-40 pt-2' {...register("key_features", { required: true, maxLength: 1500 })} />
+            {errors?.key_feature && <span className="text-red-500">Project Key Feature is required (max length: 1500 characters)</span>}
+            <label htmlFor="project date">Project Date (YYYY-MM-DD)</label>
+
+            <input type='text' placeholder="When event took place"  {...register("date", { required: true, pattern: /^\d{4}-\d{2}-\d{2}$/ })} />
+            {errors?.date && <span className="text-red-500">Please enter a valid date in the format YYYY-MM-DD</span>}
      <label htmlFor="images"> Project Images</label>
             {Array.from({ length: 4 }).map((_, index) => (
                 <div key={index} className="flex flex-col gap-y-2">
