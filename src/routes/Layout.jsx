@@ -23,7 +23,7 @@ function Layout() {
     
       <main className="relative flex">
        <Sidebar />
-       <div className="w-2/3 ml-[250px] lg:ml-[280px] mb-10">
+       <div className="w-full ml-[250px] lg:ml-[280px] mb-10">
        <Outlet />
        </div>
       

@@ -73,10 +73,10 @@ export default function ProductForm() {
             {errors?.name && <span className="text-red-500">Product Name is required</span>}
 
 
-            <label htmlFor="size">Size</label>
+            <label htmlFor="size">Size (More than one? Add a comma)</label>
             <input type="text" placeholder="Size" {...register("size", { required: true, maxLength: 100 })} />
             {errors?.size && <span className="text-red-500">Product Size is required</span>}
-            <label htmlFor="materials">Materials</label>
+            <label htmlFor="materials">Materials </label>
             <input type="text" placeholder="Materials" {...register("materials", { required: true, maxLength: 100 })} />
 
             <label htmlFor="story">Story</label>
