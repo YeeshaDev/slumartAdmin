@@ -1,21 +1,26 @@
 
 //import { useState } from "react";
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 //import { DonateData,} from "../src/assets/data";
 import Cards from "../src/components/common/Cards";
 import { useQuery } from "react-query";
 import {  fetchProjects } from "../src/utils/getArts";
 import CardSkeleton from "../src/components/common/CardSkeleton";
+import { DeleteProjects } from "../src/utils/DeleteItems";
 //import Projects from "./Projects";
 //import ProjectDetails from "../src/components/Modal/ProjectDetails";
 
 //isLoading: productsLoadingisLoading: productsLoading
 export default function AllProjects() {
+  const navigate = useNavigate()
     const { data: project,isLoading: projectLoading  } = useQuery(
         "projects",
         fetchProjects,
        
       );
+      const handleClick = (id) => {
+        navigate(`/edit_project/${id}`)
+      }
       //console.log(products)
   return (
   <section className="relative" data-aos="fade-up" data-aos-duration={800}>
@@ -35,14 +40,16 @@ export default function AllProjects() {
                 )) : project?.length > 0 && project.map((item) => {
         return (
            <>
-           <Link to={`/edit_project/${item?.id}`}>
+           
             <Cards key={item?.id}
             title={item?.name}
             img={item?.image1}
             price={item?.price}
+            handleClick={() => handleClick(item?.id)}
+           deleteItem= {() => DeleteProjects(item?.id)}
             
              />
-             </Link>
+             
              </> 
         )
     })}

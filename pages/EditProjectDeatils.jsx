@@ -64,7 +64,7 @@ export default function EditEventForm() {
         formData.append("key_features", data?.key_features);
        
         // Assuming you have three images to upload
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 4; i++) {
             const imageKey = `image${i + 1}`;
             if (data.images && data.images[i]) {
                 formData.append(imageKey, data.images[i][0]);
@@ -113,7 +113,7 @@ export default function EditEventForm() {
             {errors?.date && <span className="text-red-500">Please enter a valid date in the format YYYY-MM-DD</span>}
 
      <label htmlFor="images">Images</label>
-            {Array.from({ length: 3 }).map((_, index) => (
+            {Array.from({ length: 4 }).map((_, index) => (
                 <div key={index} className="flex flex-col gap-y-2">
                     <input
                         type="file"
